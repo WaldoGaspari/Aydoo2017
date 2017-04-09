@@ -6,18 +6,15 @@ public class Voto {
 	private Provincia provincia;
 	
 	public Voto(Candidato candidato, Provincia provincia){
-		
 		this.candidato = candidato;
 		this.provincia = provincia;
 	}
 	
 	public Candidato obtenerCandidato(){
-		
 		return this.candidato;
 	}
 	
 	public Provincia obtenerProvincia(){
-		
 		return this.provincia;
 	}
 
