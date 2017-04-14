@@ -3,7 +3,10 @@ package ar.edu.untref.aydoo;
 import java.util.Iterator;
 import java.util.List;
 
-
+/**
+ * La Libreria es un servicio ya que no presenta entidades ni objetos de valor. Solo se encarga de la logica de cierta funcionalidad
+ * del dominio.
+ */
 public class Libreria {
 
 	public static double calcularMontoACobrar(String mes, Cliente cliente){

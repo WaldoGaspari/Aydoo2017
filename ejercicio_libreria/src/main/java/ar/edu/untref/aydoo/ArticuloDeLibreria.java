@@ -1,5 +1,8 @@
 package ar.edu.untref.aydoo;
 
+/**
+ * El ArticuloDeLibreria es un objeto de valor ya que solo tiene identidad cuando le asignamos valor.
+ */
 public class ArticuloDeLibreria extends Producto {
 	
 	private final double porcentajeIVA = 0.21;

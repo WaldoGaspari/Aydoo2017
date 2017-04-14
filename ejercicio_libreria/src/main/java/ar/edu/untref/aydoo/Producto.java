@@ -1,5 +1,8 @@
 package ar.edu.untref.aydoo;
 
+/**
+ * El Producto es una entidad ya que representa un elemento del dominio del problema y tiene identidad propia.
+ */
 public abstract class Producto {
 	
 	private String nombre;

@@ -3,6 +3,9 @@ package ar.edu.untref.aydoo;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * El Cliente es una entidad ya que representa un elemento del dominio del problema y tiene identidad propia.
+ */
 public class Cliente {
 	
 	private String nombre;

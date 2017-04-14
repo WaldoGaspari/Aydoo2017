@@ -1,5 +1,8 @@
 package ar.edu.untref.aydoo;
 
+/**
+ * La Publicacion es un objeto de valor ya que solo tiene identidad cuando le asignamos valor.
+ */
 public class Publicacion extends Producto {
 	
 	private String periodicidad;
