@@ -10,8 +10,4 @@ public class ArticuloDeLibreria extends Producto {
 		this.IVA = obtenerPrecio()*this.porcentajeIVA;
 		cambiarPrecio(this.obtenerPrecio() + this.IVA);
 	}
-	
-	public double obtenerIVA(){
-		return this.IVA;
-	}
 }

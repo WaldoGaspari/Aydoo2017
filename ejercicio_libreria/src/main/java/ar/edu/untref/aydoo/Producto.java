@@ -1,13 +1,18 @@
 package ar.edu.untref.aydoo;
 
-public class Producto {
+public abstract class Producto {
 	
 	private String nombre;
 	private double precio;
 	
 	public Producto(String nombre, double precio){
 		this.nombre = nombre;
-		this.precio = precio;
+		if(precio <= 0){
+			throw new Error("El precio no puede ser cero o un numero negativo");
+			
+		} else {
+			this.precio = precio;
+		}
 	}
 	
 	public double obtenerPrecio(){

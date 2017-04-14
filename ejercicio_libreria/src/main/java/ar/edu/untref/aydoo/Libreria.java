@@ -9,13 +9,17 @@ public class Libreria {
 	public static double calcularMontoACobrar(String mes, Cliente cliente){
 		
 		double resultado = 0;
-		List<Producto> productos = cliente.obtenerListaDeProductos(mes);
-		
-		Iterator<Producto> iterador = productos.iterator();
-		while(iterador.hasNext()){
-			Producto producto = iterador.next();
-			resultado = resultado + producto.obtenerPrecio();
+		if(cliente.obtenerListaDeProductos(mes).isEmpty()){
+			return resultado;
+			
+		} else{
+			List<Producto> productos = cliente.obtenerListaDeProductos(mes);
+			Iterator<Producto> iterador = productos.iterator();
+			while(iterador.hasNext()){
+				Producto producto = iterador.next();
+				resultado = resultado + producto.obtenerPrecio();
+			}
+			return resultado;
 		}
-		return resultado;
 	}
 }
