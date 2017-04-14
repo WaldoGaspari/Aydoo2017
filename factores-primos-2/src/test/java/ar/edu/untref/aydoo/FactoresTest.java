@@ -39,5 +39,11 @@ public class FactoresTest {
 		
         NumerosPrimos.factor(-3);
     }
-
+	
+	@Test
+	public void sacarFactoresDe1517DeberiaDar37y41(){
+		
+		Assert.assertEquals(37, NumerosPrimos.factor(1517)[0]);
+		Assert.assertEquals(41, NumerosPrimos.factor(1517)[1]);
+	}
 }
