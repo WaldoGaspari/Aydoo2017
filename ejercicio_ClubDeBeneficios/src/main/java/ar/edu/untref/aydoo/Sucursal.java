@@ -33,8 +33,12 @@ public class Sucursal {
 		this.ventasSinTarjeta++;
 	}
 	
-	public void venderConTarjet(){
+	public void venderConTarjeta(){
 		this.ventasConTarjeta++;
+	}
+	
+	public int obtenerVentasConTarjeta(){
+		return this.ventasConTarjeta;
 	}
 
 }

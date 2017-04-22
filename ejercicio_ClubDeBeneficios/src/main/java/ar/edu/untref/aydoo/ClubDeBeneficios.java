@@ -1,5 +1,6 @@
 package ar.edu.untref.aydoo;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -20,6 +21,33 @@ public class ClubDeBeneficios {
 	
 	public void agregarEstablecimiento(Establecimiento establecimiento){
 		this.establecimientos.add(establecimiento);
+	}
+	
+	public void obtenerEstablecimientoConMasBeneficiosOtorgados(){
+		int cantidadMayorDeBeneficios = 0;
+		Establecimiento establecimientoGanador = this.establecimientos.get(0);
+		
+		for(int i = 0; i < this.establecimientos.size(); i++){
+			if(this.establecimientos.get(i).cantidadTotalDeVentasConTarjeta() > cantidadMayorDeBeneficios){
+				cantidadMayorDeBeneficios = this.establecimientos.get(i).cantidadTotalDeVentasConTarjeta();
+				establecimientoGanador = this.establecimientos.get(i);
+			}
+		}
+		mandarMailDeFelicitaciones(establecimientoGanador);
+	}
+	
+	private void mandarMailDeFelicitaciones(Establecimiento establecimiento){
+		Iterator<Establecimiento> iterador = this.establecimientos.iterator();
+		while(iterador.hasNext()){
+			Establecimiento establecimiento1 = iterador.next();
+			if(establecimiento1.cantidadTotalDeVentasConTarjeta() == establecimiento.cantidadTotalDeVentasConTarjeta()){
+				establecimiento1.cambiarMailDeFelicitaciones("¡Felicitaciones!Es el establecimiento con mas beneficios otorgados.");
+			}
+		}
+	}
+	
+	public Establecimiento obtenerEstablecimiento(int posicion){
+		return this.establecimientos.get(posicion);
 	}
 
 }
