@@ -2,9 +2,11 @@ package ar.edu.untref.aydoo;
 
 public class NumerosPrimos {
 	
-	private static int[] factores = new int[20];
+	private static int[] factores;
 	
-	static int[] factor(int numero){
+	public static int[] factor(int numero){
+		
+		factores = new int[20];
 		if(numero < 2){
 			throw new Error("El numero no puede ser menor a 2.");
 		}

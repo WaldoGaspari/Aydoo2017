@@ -1,5 +1,4 @@
 package ar.edu.untref.aydoo;
-import java.util.Scanner;
 
 public class Programa {
 	
@@ -8,7 +7,7 @@ public class Programa {
 		int numero = Integer.parseInt(args[0]);
 		int[] resultado = NumerosPrimos.factor(numero);
 		String formato = args[1];
-		if(formato.equalsIgnoreCase("pretty")){
+		if(formato.equalsIgnoreCase("--format=pretty")){
 	    	System.out.printf("Factores primos %d: ", numero);
 		    for(int i = 0; i < 10 && resultado[i] != 0; i++){
 		    	System.out.printf("%d ",resultado[i]);

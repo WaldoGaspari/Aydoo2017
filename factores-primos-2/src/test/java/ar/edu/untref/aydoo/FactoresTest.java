@@ -1,5 +1,9 @@
 package ar.edu.untref.aydoo;
 import org.junit.Test;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 import org.junit.Assert;
 
 
@@ -46,4 +50,54 @@ public class FactoresTest {
 		Assert.assertEquals(37, NumerosPrimos.factor(1517)[0]);
 		Assert.assertEquals(41, NumerosPrimos.factor(1517)[1]);
 	}
+	
+	@Test
+	public void sacarFactoresDe27DeberiaDar333(){
+		
+		Assert.assertEquals(3, NumerosPrimos.factor(27)[0]);
+		Assert.assertEquals(3, NumerosPrimos.factor(27)[2]);
+	}
+	
+	@Test
+	public void probarSalidaDelMainConElNumero27FormatoPretty(){
+		
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+	    System.setOut(new PrintStream(baos));
+	    String esperado = "Factores primos 27: 3 3 3 ";
+	    String[] argumentos = {"27", "--format=pretty"};
+
+	    Programa.main(argumentos);
+	    String salida = new String(baos.toByteArray());
+
+	    Assert.assertEquals(esperado, salida);
+	}
+	
+	@Test
+	public void probarSalidaDelMainConElNumero360FormatoQuiet(){
+		
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+	    System.setOut(new PrintStream(baos));
+	    String esperado = "Factores primos 360: \r\n5 \r\n3 \r\n3 \r\n2 \r\n2 \r\n2 \r\n";
+	    String[] argumentos = {"360", "--format=quiet"};
+
+	    Programa.main(argumentos);
+	    String salida = new String(baos.toByteArray());
+
+	    Assert.assertEquals(esperado, salida);
+	}
+	
+	@Test
+	public void probarSalidaDelMainConElNumero27FormatoVertical(){
+		
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+	    System.setOut(new PrintStream(baos));
+	    String esperado = "Formato no aceptado. Las opciones posibles son: pretty o quiet";
+	    String[] argumentos = {"27", "--format=vertical"};
+
+	    Programa.main(argumentos);
+	    String salida = new String(baos.toByteArray());
+
+	    Assert.assertEquals(esperado, salida);
+	}
+	
 }
