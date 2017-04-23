@@ -4,19 +4,17 @@ import java.util.Scanner;
 public class Programa {
 	
 	public static void main (String [ ] args){
-		Scanner entrada = new Scanner(System.in);
-	    System.out.println("Escribe un numero para sacar sus factores primos");
-	    int numero = entrada.nextInt();
-	    int[] resultado = NumerosPrimos.factor(numero);
-	    System.out.println("¿En que formato desea el resultado?");
-	    String decision = entrada.next();
-	    if(decision.equalsIgnoreCase("pretty")){
+		
+		int numero = Integer.parseInt(args[0]);
+		int[] resultado = NumerosPrimos.factor(numero);
+		String formato = args[1];
+		if(formato.equalsIgnoreCase("pretty")){
 	    	System.out.printf("Factores primos %d: ", numero);
 		    for(int i = 0; i < 10 && resultado[i] != 0; i++){
 		    	System.out.printf("%d ",resultado[i]);
 		    }
 		    
-	    } else if(decision.equalsIgnoreCase("quiet")){
+	    } else if(formato.equalsIgnoreCase("--format=quiet")){
 	    	resultado = ordenar(resultado);
 	    	System.out.printf("Factores primos %d: \r\n", numero);
 		    for(int i = 0; i < 10 && resultado[i] != 0; i++){
