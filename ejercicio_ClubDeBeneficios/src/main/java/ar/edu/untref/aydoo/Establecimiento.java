@@ -45,5 +45,19 @@ public class Establecimiento {
 	public String obtenerMailDeFelicitaciones(){
 		return this.mailDeFelicitaciones;
 	}
+	
+	public Sucursal obtenerSucursalQueAtendioAMasClientes(){
+		Sucursal sucursalGanadora = this.sucursales.get(0);
+		for(int i = 0; i <this.sucursales.size(); i++){
+			if(this.sucursales.get(i).obtenerVentasTotales() > sucursalGanadora.obtenerVentasTotales()){
+				sucursalGanadora = this.sucursales.get(i);
+			}
+		}
+		return sucursalGanadora;
+	}
+	
+	public Sucursal obtenerSucursal(int posicion){
+		return this.sucursales.get(posicion);
+	}
 
 }

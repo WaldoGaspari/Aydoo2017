@@ -11,6 +11,7 @@ public class Sucursal {
 	private List<Producto> productos;
 	private int ventasConTarjeta;
 	private int ventasSinTarjeta;
+	private String regalo;
 	
 	public Sucursal(String nombre, Establecimiento establecimiento){
 		this.nombre = nombre;
@@ -19,6 +20,7 @@ public class Sucursal {
 		this.productos = new LinkedList<Producto>();
 		this.ventasConTarjeta = 0;
 		this.ventasSinTarjeta = 0;
+		this.regalo = "No tiene";
 	}
 	
 	public List<Beneficio> obtenerBeneficios(){
@@ -29,16 +31,33 @@ public class Sucursal {
 		this.productos.add(producto);
 	}
 	
-	public void venderSinTarjeta(){
-		this.ventasSinTarjeta++;
-	}
-	
-	public void venderConTarjeta(){
-		this.ventasConTarjeta++;
-	}
-	
 	public int obtenerVentasConTarjeta(){
 		return this.ventasConTarjeta;
+	}
+	
+	public int obtenerVentasSinTarjeta(){
+		return this.ventasSinTarjeta;
+	}
+	
+	public int obtenerVentasTotales(){
+		return this.ventasConTarjeta + this.ventasSinTarjeta;
+	}
+	
+	public void venderProducto(boolean esConTarjeta){
+		if(esConTarjeta == true){
+			this.ventasConTarjeta++;
+			
+		} else {
+			this.ventasSinTarjeta++;
+		}
+	}
+	
+	public void recibirRegalo(String regalo){
+		this.regalo = regalo;
+	}
+	
+	public String obtenerRegalo(){
+		return this.regalo;
 	}
 
 }

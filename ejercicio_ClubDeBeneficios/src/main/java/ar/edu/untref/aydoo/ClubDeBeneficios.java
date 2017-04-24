@@ -46,6 +46,19 @@ public class ClubDeBeneficios {
 		}
 	}
 	
+	public void enviarRegaloALaSucursalQueMasAtendio(){
+		int mayorCantidadDeVentas = this.establecimientos.get(0).obtenerSucursal(0).obtenerVentasTotales();
+		int posicion = 0;
+		for(int i = 0; i < this.establecimientos.size(); i++){
+			if(this.establecimientos.get(i).obtenerSucursalQueAtendioAMasClientes().obtenerVentasTotales() > mayorCantidadDeVentas){
+				mayorCantidadDeVentas = this.establecimientos.get(i).obtenerSucursalQueAtendioAMasClientes().obtenerVentasTotales();
+				posicion = i;
+			}
+		}
+		this.establecimientos.get(posicion).obtenerSucursalQueAtendioAMasClientes().recibirRegalo("Felicitaciones al personal de la "
+				+ "sucursal por ser los que mas clientes atendieron");
+	}
+	
 	public Establecimiento obtenerEstablecimiento(int posicion){
 		return this.establecimientos.get(posicion);
 	}
