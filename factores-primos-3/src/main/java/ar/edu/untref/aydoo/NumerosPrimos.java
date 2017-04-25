@@ -6,7 +6,7 @@ public class NumerosPrimos {
 
 	public static int[] factor(int numero) {
 
-		factores = new int[20];
+		factores = new int[15];
 		if (numero < 2) {
 			throw new Error("El numero no puede ser menor a 2.");
 		}

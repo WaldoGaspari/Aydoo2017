@@ -64,7 +64,7 @@ public class FactoresTest {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	    System.setOut(new PrintStream(baos));
 	    String esperado = "Factores primos 27: 3 3 3 ";
-	    String[] argumentos = {"27", "--format=pretty", ""};
+	    String[] argumentos = {"27", "--format=pretty", "--sort= "};
 
 	    Programa.main(argumentos);
 	    String salida = new String(baos.toByteArray());
@@ -77,8 +77,8 @@ public class FactoresTest {
 		
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	    System.setOut(new PrintStream(baos));
-	    String esperado = "Factores primos 360: \r\n5 \r\n3 \r\n3 \r\n2 \r\n2 \r\n2 \r\n";
-	    String[] argumentos = {"360", "--format=quiet", ""};
+	    String esperado = "Factores primos 360: \r\n2 \r\n2 \r\n2 \r\n3 \r\n3 \r\n5 \r\n";
+	    String[] argumentos = {"360", "--format=quiet", "--sort= "};
 
 	    Programa.main(argumentos);
 	    String salida = new String(baos.toByteArray());
@@ -92,7 +92,7 @@ public class FactoresTest {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	    System.setOut(new PrintStream(baos));
 	    String esperado = "Formato no aceptado. Las opciones posibles son: pretty o quiet";
-	    String[] argumentos = {"27", "--format=vertical", ""};
+	    String[] argumentos = {"27", "--format=vertical", "--sort= "};
 
 	    Programa.main(argumentos);
 	    String salida = new String(baos.toByteArray());
@@ -107,6 +107,48 @@ public class FactoresTest {
 	    System.setOut(new PrintStream(baos));
 	    String esperado = "Factores primos 360: \r\n2 \r\n2 \r\n2 \r\n3 \r\n3 \r\n5 \r\n";
 	    String[] argumentos = {"360", "--format=quiet", "--sort=asc"};
+
+	    Programa.main(argumentos);
+	    String salida = new String(baos.toByteArray());
+
+	    Assert.assertEquals(esperado, salida);
+	}
+	
+	@Test
+	public void probarSalidaDelMainConElNumero360FormatoPrettyYOrdenAsc(){
+		
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+	    System.setOut(new PrintStream(baos));
+	    String esperado = "Factores primos 360: 2 2 2 3 3 5 ";
+	    String[] argumentos = {"360", "--format=pretty", "--sort=asc"};
+
+	    Programa.main(argumentos);
+	    String salida = new String(baos.toByteArray());
+
+	    Assert.assertEquals(esperado, salida);
+	}
+	
+	@Test
+	public void probarSalidaDelMainConElNumero360FormatoPrettyYOrdenDesc(){
+		
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+	    System.setOut(new PrintStream(baos));
+	    String esperado = "Factores primos 360: 5 3 3 2 2 2 ";
+	    String[] argumentos = {"360", "--format=pretty", "--sort=desc"};
+
+	    Programa.main(argumentos);
+	    String salida = new String(baos.toByteArray());
+
+	    Assert.assertEquals(esperado, salida);
+	}
+	
+	@Test
+	public void probarSalidaDelMainConElNumero360FormatoQuietYOrdenDesc(){
+		
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+	    System.setOut(new PrintStream(baos));
+	    String esperado = "Factores primos 360: \r\n5 \r\n3 \r\n3 \r\n2 \r\n2 \r\n2 \r\n";
+	    String[] argumentos = {"360", "--format=quiet", "--sort=desc"};
 
 	    Programa.main(argumentos);
 	    String salida = new String(baos.toByteArray());
