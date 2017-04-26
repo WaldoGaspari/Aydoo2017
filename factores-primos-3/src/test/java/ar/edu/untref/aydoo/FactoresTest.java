@@ -155,5 +155,4 @@ public class FactoresTest {
 
 	    Assert.assertEquals(esperado, salida);
 	}
-	
 }
