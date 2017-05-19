@@ -12,50 +12,50 @@ public class FactoresTest {
 	@Test
     public void sacarFactoresDe55DeberiaDar5y11(){
 		
-        Assert.assertEquals(5, NumerosPrimos.factor(55)[0]);
-        Assert.assertEquals(11, NumerosPrimos.factor(55)[1]);
+        Assert.assertEquals(5, NumerosPrimos.factorizar(55)[0]);
+        Assert.assertEquals(11, NumerosPrimos.factorizar(55)[1]);
     }
 	
 	@Test
     public void sacarFactoresDe30DeberiaDar235(){
 		
-        Assert.assertEquals(2, NumerosPrimos.factor(30)[0]);
-        Assert.assertEquals(3, NumerosPrimos.factor(30)[1]);
-        Assert.assertEquals(5, NumerosPrimos.factor(30)[2]);
+        Assert.assertEquals(2, NumerosPrimos.factorizar(30)[0]);
+        Assert.assertEquals(3, NumerosPrimos.factorizar(30)[1]);
+        Assert.assertEquals(5, NumerosPrimos.factorizar(30)[2]);
     }
 	
 	@Test (expected = Error.class)
     public void sacarFactoresDe1DeberiaDarError(){
 		
-        NumerosPrimos.factor(1);
+        NumerosPrimos.factorizar(1);
     }
 	
 	@Test
 	public void sacarFactoresDe360DeberiaDar222335(){
 		
-		Assert.assertEquals(2, NumerosPrimos.factor(360)[0]);
-		Assert.assertEquals(3, NumerosPrimos.factor(360)[3]);
-		Assert.assertEquals(5, NumerosPrimos.factor(360)[5]);
+		Assert.assertEquals(2, NumerosPrimos.factorizar(360)[0]);
+		Assert.assertEquals(3, NumerosPrimos.factorizar(360)[3]);
+		Assert.assertEquals(5, NumerosPrimos.factorizar(360)[5]);
 	}
 	
 	@Test (expected = Error.class)
     public void sacarFactoresDe3NegativoDeberiaDarError(){
 		
-        NumerosPrimos.factor(-3);
+        NumerosPrimos.factorizar(-3);
     }
 	
 	@Test
 	public void sacarFactoresDe1517DeberiaDar37y41(){
 		
-		Assert.assertEquals(37, NumerosPrimos.factor(1517)[0]);
-		Assert.assertEquals(41, NumerosPrimos.factor(1517)[1]);
+		Assert.assertEquals(37, NumerosPrimos.factorizar(1517)[0]);
+		Assert.assertEquals(41, NumerosPrimos.factorizar(1517)[1]);
 	}
 	
 	@Test
 	public void sacarFactoresDe27DeberiaDar333(){
 		
-		Assert.assertEquals(3, NumerosPrimos.factor(27)[0]);
-		Assert.assertEquals(3, NumerosPrimos.factor(27)[2]);
+		Assert.assertEquals(3, NumerosPrimos.factorizar(27)[0]);
+		Assert.assertEquals(3, NumerosPrimos.factorizar(27)[2]);
 	}
 	
 	@Test
@@ -63,7 +63,7 @@ public class FactoresTest {
 		
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	    System.setOut(new PrintStream(baos));
-	    String esperado = "Factores primos 27: 3 3 3 ";
+	    String esperado = "3 3 3 ";
 	    String[] argumentos = {"27", "--format=pretty", "--sort= "};
 
 	    Programa.main(argumentos);
@@ -77,7 +77,7 @@ public class FactoresTest {
 		
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	    System.setOut(new PrintStream(baos));
-	    String esperado = "Factores primos 360: \r\n2 \r\n2 \r\n2 \r\n3 \r\n3 \r\n5 \r\n";
+	    String esperado = "2 \r\n2 \r\n2 \r\n3 \r\n3 \r\n5 \r\n";
 	    String[] argumentos = {"360", "--format=quiet", "--sort= "};
 
 	    Programa.main(argumentos);
@@ -105,7 +105,7 @@ public class FactoresTest {
 		
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	    System.setOut(new PrintStream(baos));
-	    String esperado = "Factores primos 360: \r\n2 \r\n2 \r\n2 \r\n3 \r\n3 \r\n5 \r\n";
+	    String esperado = "2 \r\n2 \r\n2 \r\n3 \r\n3 \r\n5 \r\n";
 	    String[] argumentos = {"360", "--format=quiet", "--sort=asc"};
 
 	    Programa.main(argumentos);
@@ -119,7 +119,7 @@ public class FactoresTest {
 		
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	    System.setOut(new PrintStream(baos));
-	    String esperado = "Factores primos 360: 2 2 2 3 3 5 ";
+	    String esperado = "2 2 2 3 3 5 ";
 	    String[] argumentos = {"360", "--format=pretty", "--sort=asc"};
 
 	    Programa.main(argumentos);
@@ -133,7 +133,7 @@ public class FactoresTest {
 		
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	    System.setOut(new PrintStream(baos));
-	    String esperado = "Factores primos 360: 5 3 3 2 2 2 ";
+	    String esperado = "5 3 3 2 2 2 ";
 	    String[] argumentos = {"360", "--format=pretty", "--sort=desc"};
 
 	    Programa.main(argumentos);
@@ -147,7 +147,7 @@ public class FactoresTest {
 		
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	    System.setOut(new PrintStream(baos));
-	    String esperado = "Factores primos 360: \r\n5 \r\n3 \r\n3 \r\n2 \r\n2 \r\n2 \r\n";
+	    String esperado = "5 \r\n3 \r\n3 \r\n2 \r\n2 \r\n2 \r\n";
 	    String[] argumentos = {"360", "--format=quiet", "--sort=desc"};
 
 	    Programa.main(argumentos);

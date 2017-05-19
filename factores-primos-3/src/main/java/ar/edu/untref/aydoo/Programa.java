@@ -5,16 +5,31 @@ public class Programa {
 	public static void main (String [ ] args){
 	
 		int numero = Integer.parseInt(args[0]);
-		int[] resultado = NumerosPrimos.factor(numero);
-		String orden = args[2];
+		int[] resultado = NumerosPrimos.factorizar(numero);
 		String formato = args[1];
+		String orden = args[2];
+		imprimirFactores(resultado, formato, orden);
+	}
+	
+	private static void imprimirFactores(int[] factores, String formato, String orden){
+		
 		if(orden.equalsIgnoreCase("--sort=desc")){
-			resultado = ordenarEnFormaDescendente(resultado);
-			impresionDeLosFactores(numero, resultado, formato);
-			
-		} else if(orden.equalsIgnoreCase("--sort=asc") || orden.equalsIgnoreCase("--sort= ")){
-			impresionDeLosFactores(numero, resultado, formato);
-		}	
+			factores = ordenarEnFormaDescendente(factores);
+		}
+		
+		if(formato.equalsIgnoreCase("--format=pretty")){
+		    for(int i = 0; i < 10 && factores[i] != 0; i++){
+		    	System.out.printf("%d ",factores[i]);
+		    }
+		    
+	    } else if(formato.equalsIgnoreCase("--format=quiet")){
+		    for(int i = 0; i < 10 && factores[i] != 0; i++){
+		    	System.out.printf("%d \r\n",factores[i]);
+		    }
+		    
+	    } else{
+	    	System.out.printf("Formato no aceptado. Las opciones posibles son: pretty o quiet");
+	    }
 	}
 	
 	private static int[] ordenarEnFormaDescendente(int[] numeros){
@@ -29,23 +44,5 @@ public class Programa {
 			}
 		}
 		return numerosOrdenados;
-	}
-	
-	private static void impresionDeLosFactores(int numero, int[] factores, String formato){		
-		if(formato.equalsIgnoreCase("--format=pretty")){
-	    	System.out.printf("Factores primos %d: ", numero);
-		    for(int i = 0; i < 10 && factores[i] != 0; i++){
-		    	System.out.printf("%d ",factores[i]);
-		    }
-		    
-	    } else if(formato.equalsIgnoreCase("--format=quiet")){
-	    	System.out.printf("Factores primos %d: \r\n", numero);
-		    for(int i = 0; i < 10 && factores[i] != 0; i++){
-		    	System.out.printf("%d \r\n",factores[i]);
-		    }
-		    
-	    } else{
-	    	System.out.printf("Formato no aceptado. Las opciones posibles son: pretty o quiet");
-	    }
 	}
 }

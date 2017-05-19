@@ -4,7 +4,7 @@ public class NumerosPrimos {
 
 	private static int[] factores;
 
-	public static int[] factor(int numero) {
+	public static int[] factorizar(int numero) {
 
 		factores = new int[15];
 		if (numero < 2) {
