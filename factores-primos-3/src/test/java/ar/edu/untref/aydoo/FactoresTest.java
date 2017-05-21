@@ -1,158 +1,83 @@
 package ar.edu.untref.aydoo;
 import org.junit.Test;
-
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-
 import org.junit.Assert;
 
-
 public class FactoresTest {
-	
+
 	@Test
-    public void sacarFactoresDe55DeberiaDar5y11(){
-		
-        Assert.assertEquals(5, NumerosPrimos.factorizar(55)[0]);
-        Assert.assertEquals(11, NumerosPrimos.factorizar(55)[1]);
-    }
-	
+	public void sacarFactoresDe55DeberiaDar5y11(){
+
+		Assert.assertEquals(5, NumerosPrimos.factorizar(55)[0]);
+		Assert.assertEquals(11, NumerosPrimos.factorizar(55)[1]);
+	}
+
 	@Test
-    public void sacarFactoresDe30DeberiaDar235(){
-		
-        Assert.assertEquals(2, NumerosPrimos.factorizar(30)[0]);
-        Assert.assertEquals(3, NumerosPrimos.factorizar(30)[1]);
-        Assert.assertEquals(5, NumerosPrimos.factorizar(30)[2]);
-    }
-	
+	public void sacarFactoresDe30DeberiaDar235(){
+
+		Assert.assertEquals(2, NumerosPrimos.factorizar(30)[0]);
+		Assert.assertEquals(3, NumerosPrimos.factorizar(30)[1]);
+		Assert.assertEquals(5, NumerosPrimos.factorizar(30)[2]);
+	}
+
 	@Test (expected = Error.class)
-    public void sacarFactoresDe1DeberiaDarError(){
-		
-        NumerosPrimos.factorizar(1);
-    }
-	
+	public void sacarFactoresDe1DeberiaDarError(){
+
+		NumerosPrimos.factorizar(1);
+	}
+
 	@Test
 	public void sacarFactoresDe360DeberiaDar222335(){
-		
+
 		Assert.assertEquals(2, NumerosPrimos.factorizar(360)[0]);
 		Assert.assertEquals(3, NumerosPrimos.factorizar(360)[3]);
 		Assert.assertEquals(5, NumerosPrimos.factorizar(360)[5]);
 	}
-	
+
 	@Test (expected = Error.class)
-    public void sacarFactoresDe3NegativoDeberiaDarError(){
-		
-        NumerosPrimos.factorizar(-3);
-    }
-	
+	public void sacarFactoresDe3NegativoDeberiaDarError(){
+
+		NumerosPrimos.factorizar(-3);
+	}
+
 	@Test
 	public void sacarFactoresDe1517DeberiaDar37y41(){
-		
+
 		Assert.assertEquals(37, NumerosPrimos.factorizar(1517)[0]);
 		Assert.assertEquals(41, NumerosPrimos.factorizar(1517)[1]);
 	}
-	
+
 	@Test
 	public void sacarFactoresDe27DeberiaDar333(){
-		
+
 		Assert.assertEquals(3, NumerosPrimos.factorizar(27)[0]);
 		Assert.assertEquals(3, NumerosPrimos.factorizar(27)[2]);
 	}
-	
+
 	@Test
-	public void probarSalidaDelMainConElNumero27FormatoPretty(){
-		
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-	    System.setOut(new PrintStream(baos));
-	    String esperado = "3 3 3 ";
-	    String[] argumentos = {"27", "--format=pretty", "--sort= "};
+	public void escribirEnArchivoSalidaElNumero360FormatoPrettyYOrdenAsc(){
 
-	    Programa.main(argumentos);
-	    String salida = new String(baos.toByteArray());
-
-	    Assert.assertEquals(esperado, salida);
+		String[] argumentos = {"360", "--format=pretty", "--sort=asc", "Salida.txt"};
+		Programa.main(argumentos);
 	}
-	
+
 	@Test
-	public void probarSalidaDelMainConElNumero360FormatoQuiet(){
-		
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-	    System.setOut(new PrintStream(baos));
-	    String esperado = "2 \r\n2 \r\n2 \r\n3 \r\n3 \r\n5 \r\n";
-	    String[] argumentos = {"360", "--format=quiet", "--sort= "};
+	public void escribirEnArchivoSalidaElNumero360FormatoQuietYOrdenAsc(){
 
-	    Programa.main(argumentos);
-	    String salida = new String(baos.toByteArray());
-
-	    Assert.assertEquals(esperado, salida);
+		String[] argumentos = {"360", "--format=quiet", "--sort=asc", "Salida.txt"};
+		Programa.main(argumentos);
 	}
-	
+
 	@Test
-	public void probarSalidaDelMainConElNumero27FormatoVertical(){
-		
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-	    System.setOut(new PrintStream(baos));
-	    String esperado = "Formato no aceptado. Las opciones posibles son: pretty o quiet";
-	    String[] argumentos = {"27", "--format=vertical", "--sort= "};
+	public void escribirEnArchivoSalidaElNumero360FormatoQuietYOrdenDesc(){
 
-	    Programa.main(argumentos);
-	    String salida = new String(baos.toByteArray());
-
-	    Assert.assertEquals(esperado, salida);
+		String[] argumentos = {"360", "--format=quiet", "--sort=desc", "Salida.txt"};
+		Programa.main(argumentos);
 	}
-	
+
 	@Test
-	public void probarSalidaDelMainConElNumero360FormatoQuietYOrdenAsc(){
-		
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-	    System.setOut(new PrintStream(baos));
-	    String esperado = "2 \r\n2 \r\n2 \r\n3 \r\n3 \r\n5 \r\n";
-	    String[] argumentos = {"360", "--format=quiet", "--sort=asc"};
+	public void escribirEnDireccionRelativaElNumero360FormatoPrettyYOrdenDesc(){
 
-	    Programa.main(argumentos);
-	    String salida = new String(baos.toByteArray());
-
-	    Assert.assertEquals(esperado, salida);
-	}
-	
-	@Test
-	public void probarSalidaDelMainConElNumero360FormatoPrettyYOrdenAsc(){
-		
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-	    System.setOut(new PrintStream(baos));
-	    String esperado = "2 2 2 3 3 5 ";
-	    String[] argumentos = {"360", "--format=pretty", "--sort=asc"};
-
-	    Programa.main(argumentos);
-	    String salida = new String(baos.toByteArray());
-
-	    Assert.assertEquals(esperado, salida);
-	}
-	
-	@Test
-	public void probarSalidaDelMainConElNumero360FormatoPrettyYOrdenDesc(){
-		
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-	    System.setOut(new PrintStream(baos));
-	    String esperado = "5 3 3 2 2 2 ";
-	    String[] argumentos = {"360", "--format=pretty", "--sort=desc"};
-
-	    Programa.main(argumentos);
-	    String salida = new String(baos.toByteArray());
-
-	    Assert.assertEquals(esperado, salida);
-	}
-	
-	@Test
-	public void probarSalidaDelMainConElNumero360FormatoQuietYOrdenDesc(){
-		
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-	    System.setOut(new PrintStream(baos));
-	    String esperado = "5 \r\n3 \r\n3 \r\n2 \r\n2 \r\n2 \r\n";
-	    String[] argumentos = {"360", "--format=quiet", "--sort=desc"};
-
-	    Programa.main(argumentos);
-	    String salida = new String(baos.toByteArray());
-
-	    Assert.assertEquals(esperado, salida);
+		String[] argumentos = {"360", "--format=pretty", "--sort=desc", "C:/Users/Equipo/Archivo.txt"};
+		Programa.main(argumentos);
 	}
 }
