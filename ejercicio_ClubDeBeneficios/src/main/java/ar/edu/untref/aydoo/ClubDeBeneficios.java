@@ -6,17 +6,18 @@ import java.util.List;
 
 public class ClubDeBeneficios {
 
-	private List<Cliente> clientes;
 	private List<Establecimiento> establecimientos;
 
 	public ClubDeBeneficios(){
-		this.clientes = new LinkedList<Cliente>();
 		this.establecimientos = new LinkedList<Establecimiento>();
 	}
 
 	public void suscribirCliente(Cliente nuevoCliente){
-
-		this.clientes.add(nuevoCliente);
+		Iterator<Establecimiento> iterador = this.establecimientos.iterator();
+		while(iterador.hasNext()){
+			Establecimiento establecimiento = iterador.next();
+			establecimiento.agregarCliente(nuevoCliente);
+		}
 	}
 
 	public void agregarEstablecimiento(Establecimiento establecimiento){
@@ -63,12 +64,23 @@ public class ClubDeBeneficios {
 		return this.establecimientos.get(posicion);
 	}
 
-	public Cliente obtenerCliente(int posicion){
-		return this.clientes.get(posicion);
-	}
-
 	public void enviarReporteALosClientes(){
-
+		Iterator<Establecimiento> iterador = this.establecimientos.iterator();
+		while(iterador.hasNext()){
+			Establecimiento establecimiento = iterador.next();
+			Iterator<Cliente> iteradorCliente = establecimiento.obtenerClientes().iterator();
+			while(iteradorCliente.hasNext()){
+				Cliente cliente = iteradorCliente.next();
+				Iterator<Producto> iteradorProducto = cliente.obtenerProductosConDescuento().iterator();
+				while(iteradorProducto.hasNext()){
+					Producto producto = iteradorProducto.next();
+					if(establecimiento.saberSiUnProductoPerteneceAlEstablecimiento(producto)){
+						cliente.obtenerReporte().add(establecimiento.obtenerNombre());
+						cliente.obtenerReporte().add(producto.obtenerDescripcion());
+						cliente.obtenerReporte().add(String.valueOf(producto.obtenerPrecio()));
+					}
+				}
+			}
+		}
 	}
-
 }

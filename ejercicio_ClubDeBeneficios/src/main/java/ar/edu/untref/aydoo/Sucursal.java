@@ -63,4 +63,7 @@ public class Sucursal {
 		return this.regalo;
 	}
 
+	public List<Producto> obtenerProductos(){
+		return this.productos;
+	}
 }

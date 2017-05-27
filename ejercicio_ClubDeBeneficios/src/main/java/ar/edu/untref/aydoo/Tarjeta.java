@@ -16,5 +16,4 @@ public class Tarjeta {
 	public String obtenerTipo(){
 		return this.tipo;
 	}	
-
 }
